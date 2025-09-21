@@ -1,0 +1,53 @@
+﻿@model ClinicAppointmentSystem.Models.ClinicDb
+
+@{
+    ViewData["Title"] = "Create Appointment";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">🩺 Create New Appointment</h2>
+
+    <form asp-action="Create" method="post" class="shadow p-4 rounded bg-light">
+        <div class="mb-3">
+            <label asp-for="appointmentId" class="form-label"></label>
+            <input asp-for="appointmentId" class="form-control" placeholder="Enter Appointment ID" />
+            <span asp-validation-for="appointmentId" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="patientName" class="form-label"></label>
+            <input asp-for="patientName" class="form-control" placeholder="Enter Patient Name" />
+            <span asp-validation-for="patientName" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="department" class="form-label"></label>
+            <select asp-for="department" class="form-select">
+                <option value="">-- Select Department --</option>
+                <option>General Medicine</option>
+                <option>Pediatrics</option>
+                <option>Orthopedics</option>
+                <option>Dermatology</option>
+                <option>Cardiology</option>
+            </select>
+            <span asp-validation-for="department" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="AppointmentDate" class="form-label"></label>
+            <input asp-for="AppointmentDate" class="form-control" type="date" />
+            <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+        </div>
+
+        <div class="text-end">
+            <button type="submit" class="btn btn-primary px-4">💾 Save</button>
+            <a asp-action="Index" class="btn btn-secondary px-4">🔙 Back</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
